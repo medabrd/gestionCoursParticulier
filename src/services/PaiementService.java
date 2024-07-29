@@ -10,11 +10,11 @@ public class PaiementService {
 
     private final PaiementDAO paiementDAO;
 
-    public PaiementService(PaiementDAO paiementDAO) {
+    public PaiementService(PaiementDAO paiementDAO)  {
         this.paiementDAO = paiementDAO;
     }
 
-    public List<Paiement> getAllPaiements() {
+    public List<Paiement> getAllPaiements() throws SQLException {
         try {
             return paiementDAO.getAllPaiements();
         } catch (SQLException e) {
@@ -22,7 +22,7 @@ public class PaiementService {
         }
     }
 
-    public Paiement getPaiementById(int id) {
+    public Paiement getPaiementById(int id) throws SQLException {
         try {
             return paiementDAO.getPaiementById(id);
         } catch (SQLException e) {
@@ -30,7 +30,7 @@ public class PaiementService {
         }
     }
 
-    public List<Paiement> getPaiementsByEtudiantId(int etudiantId) {
+    public List<Paiement> getPaiementsByEtudiantId(int etudiantId) throws SQLException {
         try {
             return paiementDAO.getPaiementsByEtudiantId(etudiantId);
         } catch (SQLException e) {
@@ -38,7 +38,7 @@ public class PaiementService {
         }
     }
 
-    public List<Paiement> getPaiementsByDate(LocalDate date) {
+    public List<Paiement> getPaiementsByDate(LocalDate date) throws SQLException {
         try {
             return paiementDAO.getPaiementsByDate(date);
         } catch (SQLException e) {
@@ -46,7 +46,7 @@ public class PaiementService {
         }
     }
 
-    public void savePaiement(Paiement paiement) {
+    public void savePaiement(Paiement paiement) throws SQLException {
         try {
             paiementDAO.savePaiement(paiement);
         } catch (SQLException e) {
@@ -54,7 +54,7 @@ public class PaiementService {
         }
     }
 
-    public void updatePaiement(Paiement paiement) {
+    public void updatePaiement(Paiement paiement) throws SQLException {
         try {
             paiementDAO.updatePaiement(paiement);
         } catch (SQLException e) {
@@ -62,7 +62,7 @@ public class PaiementService {
         }
     }
 
-    public void deletePaiement(int id) {
+    public void deletePaiement(int id) throws SQLException {
         try {
             paiementDAO.deletePaiement(id);
         } catch (SQLException e) {

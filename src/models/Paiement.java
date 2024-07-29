@@ -66,7 +66,7 @@ public class Paiement {
 
     @Override
     public String toString() {
-        return "models.Paiement{" +
+        return "Paiement{" +
                 "id=" + id +
                 ", date_paiement=" + date_paiement +
                 ", montant=" + montant +
