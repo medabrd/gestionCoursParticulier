@@ -132,11 +132,9 @@ public class Groupe {
 
     @Override
     public String toString() {
-        return "models.Groupe{" +
-                "nbMaxEtudiant=" + nbMaxEtudiant +
-                ", nom_groupe='" + nom_groupe +
-                ", matiere=" + matiere +
-                ", enseignant=" + enseignant +
+        return "Groupe{" +
+                "nom_groupe=" + nom_groupe +
+                ", nbMaxEtudiant=" + nbMaxEtudiant +
                 '}';
     }
 }

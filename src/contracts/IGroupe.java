@@ -14,10 +14,7 @@ public interface IGroupe {
     Groupe getGroupeByNom(String nomGroupe) throws SQLException;
 
     // Get groupes by matiere ID and enseignant ID
-    List<Groupe> getGroupesByMatiereAndEnseignant(int idMatiere, int idEnseignant) throws SQLException;
-
-    // Get groupes by criteria
-    List<Groupe> getGroupesByCriteria(Map<String, Object> criteria) throws SQLException;
+    Groupe getGroupesByMatiereAndEnseignant(int idMatiere, int idEnseignant) throws SQLException;
 
     // Get groupes by matiere ID
     List<Groupe> getGroupesByMatiere(int idMatiere) throws SQLException;

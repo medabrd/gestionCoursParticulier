@@ -26,7 +26,7 @@ public class DatabaseSetup {
             // creation des tbles
             String creationTableEtudiantSQL = "CREATE TABLE IF NOT EXISTS etudiant ("
                     + "id INT NOT NULL AUTO_INCREMENT, "
-                    + "email VARCHAR(255) UNIQUE, "
+                    + "email VARCHAR(255) UNIQUE NOT NULL, "
                     + "nom VARCHAR(255) NOT NULL, "
                     + "prenom VARCHAR(255) NOT NULL, "
                     + "PRIMARY KEY (id))";
@@ -34,7 +34,7 @@ public class DatabaseSetup {
 
             String creationTableEnseignantSQL = "CREATE TABLE IF NOT EXISTS enseignant ("
                     + "id INT NOT NULL AUTO_INCREMENT, "
-                    + "email VARCHAR(255) UNIQUE, "
+                    + "email VARCHAR(255) UNIQUE NOT NULL, "
                     + "nom VARCHAR(255) NOT NULL, "
                     + "prenom VARCHAR(255) NOT NULL, "
                     + "PRIMARY KEY (id))";
@@ -42,7 +42,7 @@ public class DatabaseSetup {
 
             String creationTableAdminSQL = "CREATE TABLE IF NOT EXISTS admin ("
                     + "id INT NOT NULL AUTO_INCREMENT, "
-                    + "email VARCHAR(255) UNIQUE, "
+                    + "email VARCHAR(255) UNIQUE NOT NULL, "
                     + "nom VARCHAR(255) NOT NULL, "
                     + "prenom VARCHAR(255) NOT NULL, "
                     + "PRIMARY KEY (id))";

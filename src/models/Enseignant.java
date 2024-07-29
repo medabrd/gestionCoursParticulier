@@ -38,6 +38,15 @@ public class Enseignant extends Utilisateur{
         this.groupes.remove(groupe);
     }
 
+    @Override
+    public String toString() {
+        return
+                        "id=" + this.getId() +'\''+
+                        ", email='" + this.getEmail() + '\'' +
+                        ", nom='" + this.getNom()+ '\'' +
+                        ", prenom='" + this.getPrenom() + '\'';
+    }
+
 
 
 

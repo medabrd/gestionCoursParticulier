@@ -62,7 +62,7 @@ public class Salle {
 
     @Override
     public String toString() {
-        return "models.Salle{" +
+        return "Salle{" +
                 "numSalle=" + numSalle +
                 ", capacite=" + capacite +
                 '}';

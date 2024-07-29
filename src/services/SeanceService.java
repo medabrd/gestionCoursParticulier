@@ -1,5 +1,4 @@
 package services;
-import contracts.ISeance;
 import dataBase.SeanceDAO;
 import models.Seance;
 import java.sql.SQLException;

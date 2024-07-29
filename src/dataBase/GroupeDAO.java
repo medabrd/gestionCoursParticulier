@@ -74,8 +74,9 @@ public class GroupeDAO implements IGroupe {
     }
 
     @Override
-    public List<Groupe> getGroupesByMatiereAndEnseignant(int idMatiere, int idEnseignant) throws SQLException {
-        List<Groupe> groupes = new ArrayList<>();
+    public Groupe getGroupesByMatiereAndEnseignant(int idMatiere, int idEnseignant) throws SQLException {
+        Groupe groupe = null; // Déclarez l'objet groupe en dehors du bloc try
+
         String query = "SELECT * FROM groupe WHERE id_matiere = ? AND id_enseignant = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -83,73 +84,21 @@ public class GroupeDAO implements IGroupe {
             preparedStatement.setInt(2, idEnseignant);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
+                if (resultSet.next()) {
                     int nbMaxEtudiant = resultSet.getInt("nb_max_etudiant");
                     String nomGroupe = resultSet.getString("nom_groupe");
 
                     Matiere matiere = matiereService.getMatiereById(idMatiere);
                     Enseignant enseignant = enseignantService.getEnseignantById(idEnseignant);
 
-                    Groupe groupe = new Groupe(nbMaxEtudiant, enseignant, matiere);
+                    groupe = new Groupe(nbMaxEtudiant, enseignant, matiere);
                     groupe.setNom_groupe(nomGroupe);
-                    groupes.add(groupe);
                 }
             }
         }
-        return groupes;
+        return groupe;
     }
 
-    @Override
-    public List<Groupe> getGroupesByCriteria(Map<String, Object> criteria) throws SQLException {
-        List<Groupe> groupes = new ArrayList<>();
-        StringBuilder query = new StringBuilder("SELECT * FROM groupe WHERE 1=1");
-
-        if (criteria.containsKey("id_matiere")) {
-            query.append(" AND id_matiere = ?");
-        }
-        if (criteria.containsKey("id_enseignant")) {
-            query.append(" AND id_enseignant = ?");
-        }
-        if (criteria.containsKey("nb_max_etudiant")) {
-            query.append(" AND nb_max_etudiant = ?");
-        }
-        if (criteria.containsKey("nom_groupe")) {
-            query.append(" AND nom_groupe = ?");
-        }
-
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query.toString())) {
-            int index = 1;
-            if (criteria.containsKey("id_matiere")) {
-                preparedStatement.setInt(index++, (Integer) criteria.get("id_matiere"));
-            }
-            if (criteria.containsKey("id_enseignant")) {
-                preparedStatement.setInt(index++, (Integer) criteria.get("id_enseignant"));
-            }
-            if (criteria.containsKey("nb_max_etudiant")) {
-                preparedStatement.setInt(index++, (Integer) criteria.get("nb_max_etudiant"));
-            }
-            if (criteria.containsKey("nom_groupe")) {
-                preparedStatement.setString(index++, (String) criteria.get("nom_groupe"));
-            }
-
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
-                    int idMatiere = resultSet.getInt("id_matiere");
-                    int idEnseignant = resultSet.getInt("id_enseignant");
-                    int nbMaxEtudiant = resultSet.getInt("nb_max_etudiant");
-                    String nomGroupe = resultSet.getString("nom_groupe");
-
-                    Matiere matiere = matiereService.getMatiereById(idMatiere);
-                    Enseignant enseignant = enseignantService.getEnseignantById(idEnseignant);
-
-                    Groupe groupe = new Groupe(nbMaxEtudiant, enseignant, matiere);
-                    groupe.setNom_groupe(nomGroupe);
-                    groupes.add(groupe);
-                }
-            }
-        }
-        return groupes;
-    }
 
     @Override
     public List<Groupe> getGroupesByMatiere(int idMatiere) throws SQLException {

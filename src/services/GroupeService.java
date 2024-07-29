@@ -3,7 +3,7 @@ import dataBase.GroupeDAO;
 import models.Groupe;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
+
 
 public class GroupeService {
 
@@ -13,7 +13,7 @@ public class GroupeService {
         this.groupeDAO = groupeDAO;
     }
 
-    public List<Groupe> getAllGroupes() {
+    public List<Groupe> getAllGroupes() throws SQLException {
         try {
             return groupeDAO.getAllGroupes();
         } catch (SQLException e) {
@@ -22,7 +22,7 @@ public class GroupeService {
         }
     }
 
-    public Groupe getGroupeByNom(String nomGroupe) {
+    public Groupe getGroupeByNom(String nomGroupe) throws SQLException {
         try {
             return groupeDAO.getGroupeByNom(nomGroupe);
         } catch (SQLException e) {
@@ -31,7 +31,7 @@ public class GroupeService {
         }
     }
 
-    public List<Groupe> getGroupesByMatiereAndEnseignant(int idMatiere, int idEnseignant) {
+    public Groupe getGroupesByMatiereAndEnseignant(int idMatiere, int idEnseignant) throws SQLException {
         try {
             return groupeDAO.getGroupesByMatiereAndEnseignant(idMatiere, idEnseignant);
         } catch (SQLException e) {
@@ -40,16 +40,7 @@ public class GroupeService {
         }
     }
 
-    public List<Groupe> getGroupesByCriteria(Map<String, Object> criteria) {
-        try {
-            return groupeDAO.getGroupesByCriteria(criteria);
-        } catch (SQLException e) {
-            // Handle the exception, e.g., log it or rethrow it as a runtime exception
-            throw new RuntimeException("Error fetching groupes by criteria", e);
-        }
-    }
-
-    public List<Groupe> getGroupesByMatiere(int idMatiere) {
+    public List<Groupe> getGroupesByMatiere(int idMatiere) throws SQLException {
         try {
             return groupeDAO.getGroupesByMatiere(idMatiere);
         } catch (SQLException e) {
@@ -58,7 +49,7 @@ public class GroupeService {
         }
     }
 
-    public List<Groupe> getGroupesByEnseignant(int idEnseignant) {
+    public List<Groupe> getGroupesByEnseignant(int idEnseignant) throws SQLException {
         try {
             return groupeDAO.getGroupesByEnseignant(idEnseignant);
         } catch (SQLException e) {
@@ -67,7 +58,7 @@ public class GroupeService {
         }
     }
 
-    public void saveGroupe(Groupe groupe) {
+    public void saveGroupe(Groupe groupe) throws SQLException {
         try {
             groupeDAO.saveGroupe(groupe);
         } catch (SQLException e) {
@@ -76,7 +67,7 @@ public class GroupeService {
         }
     }
 
-    public void updateGroupe(Groupe groupe) {
+    public void updateGroupe(Groupe groupe) throws SQLException {
         try {
             groupeDAO.updateGroupe(groupe);
         } catch (SQLException e) {
@@ -85,7 +76,7 @@ public class GroupeService {
         }
     }
 
-    public void deleteGroupe(String nomGroupe) {
+    public void deleteGroupe(String nomGroupe) throws SQLException {
         try {
             groupeDAO.deleteGroupe(nomGroupe);
         } catch (SQLException e) {

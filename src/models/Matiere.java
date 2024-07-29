@@ -74,11 +74,11 @@ public class Matiere {
 
     @Override
     public String toString() {
-        return "models.Matiere{" +
+        return "Matiere{" +
                 "id=" + id +
-                ", libelle='" + libelle +
-                ", niveau='" + niveau +
-                ", section='" + section +
+                ", libelle=" + libelle +
+                ", niveau=" + niveau +
+                ", section=" + section +
                 '}';
     }
 

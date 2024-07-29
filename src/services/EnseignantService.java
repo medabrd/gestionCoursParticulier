@@ -7,7 +7,7 @@ import java.util.List;
 
 public class EnseignantService {
 
-    private EnseignantDAO enseignantDAO;
+    private final EnseignantDAO enseignantDAO;
 
     public EnseignantService(EnseignantDAO enseignantDAO) {
         this.enseignantDAO = enseignantDAO;

@@ -1,6 +1,4 @@
 package models;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Etudiant extends Utilisateur {
@@ -58,5 +56,14 @@ public class Etudiant extends Utilisateur {
     // Suppression payment
     public void removePaiement(Paiement paiement) {
         this.paiements.remove(paiement);
+    }
+
+    @Override
+    public String toString() {
+        return
+                "id=" + this.getId() +'\''+
+                ", email='" + this.getEmail() + '\'' +
+                ", nom='" + this.getNom()+ '\'' +
+                ", prenom='" + this.getPrenom() + '\'';
     }
 }
